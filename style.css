@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background: #fff3e0;
   color: #333;
   padding: 2rem;
@@ -81,7 +81,6 @@ section {
   background: #388e3c;
 }
 
-/* TEXTO ADAPTÁVEL */
 h1 {
   font-size: 2rem;
 }
@@ -90,7 +89,7 @@ h2 {
   font-size: 1.5rem;
 }
 
-/* RESPONSIVIDADE: AJUSTES PARA TELAS PEQUENAS */
+/* RESPONSIVO */
 @media (max-width: 768px) {
   body {
     padding: 1rem;
