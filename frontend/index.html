@@ -1,280 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🍕 Pizza Master Tycoon</title>
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Pizza Master Tycoon</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
-        <!-- Loading Screen -->
-        <div id="loading-screen" class="loading-screen">
-            <div class="pizza-loader">
-                <div class="pizza">🍕</div>
-                <div class="loading-text">Carregando Pizza Master Tycoon...</div>
-            </div>
-        </div>
 
-        <!-- Login Screen -->
-        <div id="login-screen" class="screen active">
-            <div class="login-container">
-                <div class="logo">
-                    <h1><span class="pizza-icon">🍕</span> Pizza Master Tycoon</h1>
-                    <p class="tagline">Torne-se o maior magnata da pizza!</p>
-                </div>
-                
-                <div class="login-card">
-                    <h2>Bem-vindo, Chef!</h2>
-                    <p>Entre para começar sua jornada pizzaiola</p>
-                    
-                    <button id="login-btn" class="btn-primary">
-                        <i class="fab fa-google"></i>
-                        Entrar com Google
-                    </button>
-                    
-                    <div class="features">
-                        <div class="feature">
-                            <i class="fas fa-coins"></i>
-                            <span>Ganhe CalabrinCoins</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-level-up-alt"></i>
-                            <span>Suba de nível</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-pizza-slice"></i>
-                            <span>Desbloqueie receitas</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- AQUI COLA O SEU CÓDIGO HTML -->
 
-        <!-- Game Screen -->
-        <div id="game-screen" class="screen">
-            <!-- Header -->
-            <header class="game-header">
-                <div class="user-info">
-                    <div class="avatar">
-                        <img id="user-avatar" src="" alt="Avatar" />
-                    </div>
-                    <div class="user-details">
-                        <h3 id="username">Chef</h3>
-                        <div class="level-badge">
-                            <i class="fas fa-crown"></i>
-                            <span>Nível <span id="user-level">1</span></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="stats">
-                    <div class="stat">
-                        <i class="fas fa-coins"></i>
-                        <span id="user-balance">100</span>
-                        <small>CLBC</small>
-                    </div>
-                    <div class="stat">
-                        <i class="fas fa-star"></i>
-                        <span id="user-xp">0</span>
-                        <small>XP</small>
-                    </div>
-                </div>
-                
-                <button id="logout-btn" class="btn-secondary">
-                    <i class="fas fa-sign-out-alt"></i>
-                </button>
-            </header>
+  <div id="loading-screen" class="active">Carregando...</div>
 
-            <!-- Navigation -->
-            <nav class="game-nav">
-                <button class="nav-btn active" data-tab="kitchen">
-                    <i class="fas fa-fire"></i>
-                    <span>Cozinha</span>
-                </button>
-                <button class="nav-btn" data-tab="shop">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>Loja</span>
-                </button>
-                <button class="nav-btn" data-tab="profile">
-                    <i class="fas fa-user"></i>
-                    <span>Perfil</span>
-                </button>
-            </nav>
+  <div id="login-screen">
+    <h1>🍕 Pizza Master Tycoon</h1>
+    <button id="login-btn">Entrar com Google</button>
+  </div>
 
-            <!-- Main Content -->
-            <main class="game-content">
-                <!-- Kitchen Tab -->
-                <div id="kitchen-tab" class="tab-content active">
-                    <div class="kitchen-section">
-                        <h2>
-                            <i class="fas fa-fire"></i>
-                            Sua Cozinha
-                        </h2>
-                        
-                        <div class="pizza-maker">
-                            <div class="pizza-display">
-                                <div class="pizza-base">
-                                    <div class="pizza-animation">🍕</div>
-                                </div>
-                                <div class="pizza-status">
-                                    <h3>Pizza Margherita</h3>
-                                    <p>Receita clássica italiana</p>
-                                </div>
-                            </div>
-                            
-                            <div class="action-buttons">
-                                <button id="sell-pizza-btn" class="btn-primary btn-large">
-                                    <i class="fas fa-pizza-slice"></i>
-                                    <span>Vender Pizza</span>
-                                    <small>+10 CLBC • +20 XP</small>
-                                </button>
-                                
-                                <button id="quick-sell-btn" class="btn-secondary">
-                                    <i class="fas fa-bolt"></i>
-                                    Quick Sell (x10)
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="progress-section">
-                            <h3>Progresso do Nível</h3>
-                            <div class="xp-bar">
-                                <div class="xp-fill" id="xp-progress"></div>
-                                <span class="xp-text">
-                                    <span id="current-xp">0</span> / <span id="max-xp">100</span> XP
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shop Tab -->
-                <div id="shop-tab" class="tab-content">
-                    <div class="shop-section">
-                        <h2>
-                            <i class="fas fa-shopping-cart"></i>
-                            Loja de Upgrades
-                        </h2>
-                        
-                        <div class="shop-grid">
-                            <div class="shop-item">
-                                <div class="item-icon">🔥</div>
-                                <h3>Forno Turbo</h3>
-                                <p>Asse pizzas 2x mais rápido</p>
-                                <div class="price">500 CLBC</div>
-                                <button class="btn-primary">Comprar</button>
-                            </div>
-                            
-                            <div class="shop-item">
-                                <div class="item-icon">🧀</div>
-                                <h3>Queijo Premium</h3>
-                                <p>+50% XP por pizza vendida</p>
-                                <div class="price">1,000 CLBC</div>
-                                <button class="btn-primary">Comprar</button>
-                            </div>
-                            
-                            <div class="shop-item">
-                                <div class="item-icon">⚡</div>
-                                <h3>Auto-Vendedor</h3>
-                                <p>Vende pizzas automaticamente</p>
-                                <div class="price">2,500 CLBC</div>
-                                <button class="btn-primary">Comprar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Profile Tab -->
-                <div id="profile-tab" class="tab-content">
-                    <div class="profile-section">
-                        <h2>
-                            <i class="fas fa-user"></i>
-                            Seu Perfil
-                        </h2>
-                        
-                        <div class="profile-card">
-                            <div class="profile-header">
-                                <img id="profile-avatar" src="" alt="Avatar" />
-                                <div class="profile-info">
-                                    <h3 id="profile-username">Chef</h3>
-                                    <p id="profile-email">chef@pizza.com</p>
-                                    <div class="badges">
-                                        <span class="badge">🏆 Iniciante</span>
-                                        <span class="badge">🍕 Pizzaiolo</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="stats-grid">
-                                <div class="stat-card">
-                                    <i class="fas fa-level-up-alt"></i>
-                                    <h3 id="profile-level">1</h3>
-                                    <p>Nível</p>
-                                </div>
-                                <div class="stat-card">
-                                    <i class="fas fa-coins"></i>
-                                    <h3 id="profile-balance">100</h3>
-                                    <p>CalabrinCoins</p>
-                                </div>
-                                <div class="stat-card">
-                                    <i class="fas fa-pizza-slice"></i>
-                                    <h3 id="pizzas-sold">0</h3>
-                                    <p>Pizzas Vendidas</p>
-                                </div>
-                                <div class="stat-card">
-                                    <i class="fas fa-calendar"></i>
-                                    <h3 id="days-played">1</h3>
-                                    <p>Dias Jogando</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-
-        <!-- Success Modal -->
-        <div id="success-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-icon">🎉</div>
-                <h2 id="modal-title">Parabéns!</h2>
-                <p id="modal-message">Você vendeu uma pizza!</p>
-                <button id="modal-close" class="btn-primary">Continuar</button>
-            </div>
-        </div>
-
-        <!-- Level Up Modal -->
-        <div id="levelup-modal" class="modal">
-            <div class="modal-content level-up">
-                <div class="modal-icon">🏆</div>
-                <h2>Level Up!</h2>
-                <p>Você alcançou o nível <span id="new-level">2</span>!</p>
-                <div class="rewards">
-                    <div class="reward">
-                        <i class="fas fa-coins"></i>
-                        <span>+100 CLBC de bônus</span>
-                    </div>
-                </div>
-                <button id="levelup-close" class="btn-primary">Incrível!</button>
-            </div>
-        </div>
+  <div id="game-screen">
+    <div class="header">
+      <img id="user-avatar" src="" alt="Avatar" />
+      <span>Chef: <span id="username"></span></span>
+      <span>Nível: <span id="user-level"></span></span>
+      <span>Saldo: <span id="user-balance"></span> CLBC</span>
+      <span>XP: <span id="user-xp"></span></span>
+      <div class="xp-bar">
+        <div id="xp-progress" class="progress-bar"></div>
+        <span id="current-xp">0</span> / <span id="max-xp">100</span>
+      </div>
+      <button id="logout-btn">Sair</button>
     </div>
 
-    <!-- Scripts -->
-    <script src="config.js"></script>
-    <script src="api.js"></script>
-    <script src="auth.js"></script>
-    <script src="game.js"></script>
-    <script src="app.js"></script>
+    <!-- Navegação -->
+    <nav>
+      <button class="nav-btn active" data-tab="kitchen">Cozinha</button>
+      <button class="nav-btn" data-tab="shop">Loja</button>
+      <button class="nav-btn" data-tab="profile">Perfil</button>
+    </nav>
+
+    <!-- Abas -->
+    <main>
+      <section class="tab-content active" id="kitchen-tab">
+        <h2>Cozinha</h2>
+        <div class="pizza-animation">🍕</div>
+        <button id="sell-pizza-btn">Vender Pizza</button>
+        <button id="quick-sell-btn">Venda Rápida</button>
+      </section>
+
+      <section class="tab-content" id="shop-tab">
+        <h2>Loja</h2>
+        <p>Itens em breve...</p>
+      </section>
+
+      <section class="tab-content" id="profile-tab">
+        <h2>Perfil</h2>
+        <img id="profile-avatar" src="" alt="Avatar Perfil" />
+        <p>Nome: <span id="profile-username"></span></p>
+        <p>Email: <span id="profile-email"></span></p>
+        <p>Nível: <span id="profile-level"></span></p>
+        <p>Saldo: <span id="profile-balance"></span></p>
+        <p>Pizzas vendidas: <span id="pizzas-sold"></span></p>
+        <p>Dias jogando: <span id="days-played"></span></p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modais -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <h3 id="modal-title"></h3>
+      <p id="modal-message"></p>
+      <button id="modal-close">Fechar</button>
+    </div>
+  </div>
+
+  <div id="levelup-modal" class="modal">
+    <div class="modal-content">
+      <h3>🎉 Nível Up!</h3>
+      <p>Você alcançou o nível <span id="new-level"></span>!</p>
+      <button id="levelup-close">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="config.js"></script>
+  <script src="api.js"></script>
+  <script src="auth.js"></script>
+  <script src="game.js"></script>
+  <script src="app.js"></script>
+
 </body>
 </html>
