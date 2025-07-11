@@ -1,2 +1,16 @@
-# Pizzamastertycoon
-Pizza Master Tycoon é um jogo web interativo de simulação e estratégia onde o jogador gerencia uma pizzaria virtual, monta pizzas, vende para ganhar CalabrinCoins (CLBC) e evolui seu império gastronômico. Desenvolvido com Supabase (backend) e Vercel (frontend).
+# 🍕 Pizza Master Tycoon – Backend
+
+Este é o backend oficial do jogo **Pizza Master Tycoon**, feito em Python com Flask.
+
+## 🔧 Tecnologias usadas
+
+- Python 3.10+
+- Flask
+- Flask-CORS
+
+## 🚀 Rodando localmente
+
+1. Clone o projeto
+```bash
+git clone https://github.com/seu-usuario/pizza-master-backend.git
+cd pizza-master-backend
