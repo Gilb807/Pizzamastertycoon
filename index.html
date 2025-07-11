@@ -1,81 +1,67 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pizza Master Tycoon 🍕</title>
-
-  <!-- Supabase CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-  <!-- CSS e JS -->
-  <link rel="stylesheet" href="style.css" />
+  <title>Pizza Master Tycoon 🍕</title>  <!-- Supabase CDN -->  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>  <!-- CSS e JS -->  <link rel="stylesheet" href="style.css" />
   <script defer src="supabase.js"></script>
   <script defer src="main.js"></script>
-</head>
-
-<body>
+</head><body>
   <header>
     <h1>🍕 Pizza Master Tycoon</h1>
     <p>Gerencie sua pizzaria, venda pizzas e ganhe CalabrinCoins!</p>
-  </header>
-
-  <nav>
+  </header>  <nav>
     <a href="#jogo">Jogo</a>
     <a href="#loja">Loja</a>
     <a href="#carteira">Carteira</a>
     <a href="#perfil">Perfil</a>
-  </nav>
-
-  <main>
+  </nav>  <main>
     <!-- Seção de login -->
     <section id="login">
       <button id="login-btn" class="button">Login com GitHub</button>
-    </section>
+    </section><!-- Seção do jogo (invisível até login) -->
+<section id="game" style="display: none;">
+  <h2>Bem-vindo, <span id="username"></span>!</h2>
+  <p>Saldo: <span id="saldo">0</span> CLBC</p>
+  <p>XP: <span id="xp">0</span></p>
+  <button class="button" onclick="venderPizza()">🍕 Vender Pizza (+10 CLBC)</button>
+</section>
 
-    <!-- Seção do jogo (invisível até login) -->
-    <section id="game" style="display: none;">
-      <h2>Bem-vindo, <span id="username"></span>!</h2>
-      <p>Saldo: <span id="saldo">0</span> CLBC</p>
-      <p>XP: <span id="xp">0</span></p>
-      <button class="button" onclick="venderPizza()">🍕 Vender Pizza (+10 CLBC)</button>
-    </section>
+<!-- Jogo -->
+<section id="jogo">
+  <h2>🎮 Montar Pizza</h2>
+  <div class="card">
+    <p>Escolha seus ingredientes e monte a melhor pizza da cidade!</p>
+    <button class="button" onclick="venderPizza()">Vender Pizza</button>
+  </div>
+</section>
 
-    <!-- Jogo -->
-    <section id="jogo">
-      <h2>🎮 Montar Pizza</h2>
-      <div class="card">
-        <p>Escolha seus ingredientes e monte a melhor pizza da cidade!</p>
-        <button class="button" onclick="venderPizza()">Vender Pizza</button>
-      </div>
-    </section>
+<!-- Loja -->
+<section id="loja">
+  <h2>🛒 Loja de CalabrinCoins</h2>
+  <div class="card">
+    <p>Compre moedas para desbloquear novos ingredientes e upgrades!</p>
+    <button class="button">Comprar CLBC</button>
+  </div>
+</section>
 
-    <!-- Loja -->
-    <section id="loja">
-      <h2>🛒 Loja de CalabrinCoins</h2>
-      <div class="card">
-        <p>Compre moedas para desbloquear novos ingredientes e upgrades!</p>
-        <button class="button">Comprar CLBC</button>
-      </div>
-    </section>
+<!-- Carteira -->
+<section id="carteira">
+  <h2>💰 Carteira Digital</h2>
+  <div class="card">
+    <p>Saldo: <strong id="saldo-carteira">0 CLBC</strong></p>
+    <p>XP: <span id="xp-carteira">0</span></p>
+  </div>
+</section>
 
-    <!-- Carteira -->
-    <section id="carteira">
-      <h2>💰 Carteira Digital</h2>
-      <div class="card">
-        <p>Saldo: <strong id="saldo-carteira">0 CLBC</strong></p>
-        <p>XP: <span id="xp-carteira">0</span></p>
-      </div>
-    </section>
+<!-- Perfil -->
+<section id="perfil">
+  <h2>👤 Seu Perfil</h2>
+  <div class="card">
+    <p>Jogador: <span id="username-perfil">N/A</span></p>
+    <p>Nível: <span id="nivel">1</span> | XP: <span id="xp-total">0</span> / <span id="xp-next">100</span></p>
+  </div>
+</section>
 
-    <!-- Perfil -->
-    <section id="perfil">
-      <h2>👤 Seu Perfil</h2>
-      <div class="card">
-        <p>Jogador: Gilberto</p>
-        <p>Nível: 4 | XP: 820 / 1000</p>
-      </div>
-    </section>
   </main>
 </body>
 </html>
