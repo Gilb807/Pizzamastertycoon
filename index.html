@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pizza Master Tycoon 🍕</title>
 
-  <!-- CDN do Supabase -->
+  <!-- Supabase CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-  <!-- Seu CSS e JS -->
-  <link rel="stylesheet" href="style.css">
-  <script defer src="main.js"></script>
+  <!-- CSS e JS -->
+  <link rel="stylesheet" href="style.css" />
   <script defer src="supabase.js"></script>
+  <script defer src="main.js"></script>
 </head>
 
 <body>
@@ -28,6 +28,20 @@
   </nav>
 
   <main>
+    <!-- Seção de login -->
+    <section id="login">
+      <button id="login-btn" class="button">Login com GitHub</button>
+    </section>
+
+    <!-- Seção do jogo (invisível até login) -->
+    <section id="game" style="display: none;">
+      <h2>Bem-vindo, <span id="username"></span>!</h2>
+      <p>Saldo: <span id="saldo">0</span> CLBC</p>
+      <p>XP: <span id="xp">0</span></p>
+      <button class="button" onclick="venderPizza()">🍕 Vender Pizza (+10 CLBC)</button>
+    </section>
+
+    <!-- Jogo -->
     <section id="jogo">
       <h2>🎮 Montar Pizza</h2>
       <div class="card">
@@ -36,6 +50,7 @@
       </div>
     </section>
 
+    <!-- Loja -->
     <section id="loja">
       <h2>🛒 Loja de CalabrinCoins</h2>
       <div class="card">
@@ -44,25 +59,16 @@
       </div>
     </section>
 
+    <!-- Carteira -->
     <section id="carteira">
       <h2>💰 Carteira Digital</h2>
       <div class="card">
-        <p>Saldo: <strong id="saldo">0 CLBC</strong></p>
-        <p>XP: <span id="xp">0</span></p>
+        <p>Saldo: <strong id="saldo-carteira">0 CLBC</strong></p>
+        <p>XP: <span id="xp-carteira">0</span></p>
       </div>
     </section>
 
-    <section id="login">
-      <button id="login-btn" class="button">Login com GitHub</button>
-    </section>
-
-    <section id="game" style="display:none;">
-      <h2>Bem-vindo, <span id="username"></span>!</h2>
-      <p>Saldo: <span id="saldo">0</span> CLBC</p>
-      <p>XP: <span id="xp">0</span></p>
-      <button class="button" onclick="venderPizza()">🍕 Vender Pizza (+10 CLBC)</button>
-    </section>
-
+    <!-- Perfil -->
     <section id="perfil">
       <h2>👤 Seu Perfil</h2>
       <div class="card">
