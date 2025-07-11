@@ -1,23 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pizza Master Tycoon 🍕</title>
+
+  <!-- Arquivo CSS externo -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Scripts JS -->
   <script defer src="main.js"></script>
   <script defer src="supabase.js"></script>
 </head>
 <body>
   <header>
     <h1>🍕 Pizza Master Tycoon</h1>
-    <p>Gerencie sua pizzaria, venda pizzas e ganhe CalabrinCoins (CLBC)!</p>
+    <p>Gerencie sua pizzaria, venda pizzas e ganhe CalabrinCoins!</p>
   </header>
 
+  <nav>
+    <a href="#jogo">Jogo</a>
+    <a href="#loja">Loja</a>
+    <a href="#carteira">Carteira</a>
+    <a href="#perfil">Perfil</a>
+  </nav>
+
   <main>
+    <section id="jogo">
+      <h2>🎮 Montar Pizza</h2>
+      <div class="card">
+        <p>Escolha seus ingredientes e monte a melhor pizza da cidade!</p>
+        <button class="button">Vender Pizza</button>
+      </div>
+    </section>
+
+    <section id="loja">
+      <h2>🛒 Loja de CalabrinCoins</h2>
+      <div class="card">
+        <p>Compre moedas para desbloquear novos ingredientes e upgrades!</p>
+        <button class="button">Comprar CLBC</button>
+      </div>
+    </section>
+
+    <section id="carteira">
+      <h2>💰 Carteira Digital</h2>
+      <div class="card">
+        <p>Saldo: <strong>250 CLBC</strong></p>
+        <p>Última transação: +50 CLBC (venda de pizza)</p>
+      </div>
+    </section>
+
     <section id="login">
       <button id="login-btn">Login com Google</button>
+    </section>
+
+    <section id="perfil">
+      <h2>👤 Seu Perfil</h2>
+      <div class="card">
+        <p>Jogador: Gilberto</p>
+        <p>Nível: 4 | XP: 820 / 1000</p>
+      </div>
     </section>
 
     <section id="game" style="display:none;">
