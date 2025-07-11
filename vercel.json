@@ -2,14 +2,24 @@
   "version": 2,
   "builds": [
     {
-      "src": "**/*",
+      "src": "backend/app.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/**/*",
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/api/(.*)",
+      "destination": "backend/app.py"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/frontend/(.*)",
+      "destination": "/frontend/$1"
     }
   ],
   "headers": [
@@ -30,5 +40,9 @@
         }
       ]
     }
-  ]
+  ],
+  "env": {
+    "PYTHONPATH": "./backend",
+    "FLASK_ENV": "production"
+  }
 }
