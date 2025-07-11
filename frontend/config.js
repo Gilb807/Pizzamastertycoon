@@ -1,18 +1,19 @@
 // ==========================================================================
-// PIZZA MASTER TYCOON - CONFIGURATION
+// PIZZA MASTER TYCOON - CONFIGURAÇÃO GLOBAL
 // ==========================================================================
 
-// Supabase Configuration
+// 1. Configuração do Supabase
 const SUPABASE_CONFIG = {
     url: 'https://otujulkbkccsxuknkung.supabase.co',
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im90dWp1bGtia2Njc3h1a25rdW5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTIxOTI3MzIsImV4cCI6MjA2Nzc2ODczMn0.MSHdM3AWZ0SMyJwjeMBAMLeUJYSy4I_nqpSy02vDhm4'
 };
 
-// API Configuration
+// 2. Configuração da API (ajustada para produção)
 const API_CONFIG = {
     baseUrl: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'http://localhost:5000'
-        : window.location.origin, // Produção usa mesmo domínio com origem completa
+        ? 'http://localhost:5000' // Ambiente de desenvolvimento
+        : 'https://pizzamastertycoon-backend.vercel.app', // 🔁 Substitua pelo domínio correto do backend na Vercel
+
     endpoints: {
         createUser: '/api/user',
         finishGame: '/api/game/finish',
@@ -21,7 +22,7 @@ const API_CONFIG = {
     }
 };
 
-// Game Configuration
+// 3. Configuração do Jogo
 const GAME_CONFIG = {
     rewards: {
         sellPizza: {
@@ -34,7 +35,7 @@ const GAME_CONFIG = {
     quickSellMultiplier: 10
 };
 
-// UI Configuration
+// 4. Configurações de UI
 const UI_CONFIG = {
     animations: {
         fadeInDuration: 300,
@@ -47,10 +48,10 @@ const UI_CONFIG = {
     }
 };
 
-// Initialize Supabase Client
+// 5. Inicializar o cliente do Supabase
 const supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
 
-// Make configurations available globally
+// 6. Tornar configurações acessíveis globalmente no projeto
 window.PIZZA_CONFIG = {
     SUPABASE_CONFIG,
     API_CONFIG,
