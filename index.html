@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pizza Master Tycoon 🍕</title>
 
-  <!-- Arquivo CSS externo -->
-  <link rel="stylesheet" href="style.css">
+  <!-- CDN do Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-  <!-- Scripts JS -->
+  <!-- Seu CSS e JS -->
+  <link rel="stylesheet" href="style.css">
   <script defer src="main.js"></script>
   <script defer src="supabase.js"></script>
 </head>
+
 <body>
   <header>
     <h1>🍕 Pizza Master Tycoon</h1>
@@ -30,7 +32,7 @@
       <h2>🎮 Montar Pizza</h2>
       <div class="card">
         <p>Escolha seus ingredientes e monte a melhor pizza da cidade!</p>
-        <button class="button">Vender Pizza</button>
+        <button class="button" onclick="venderPizza()">Vender Pizza</button>
       </div>
     </section>
 
@@ -45,13 +47,20 @@
     <section id="carteira">
       <h2>💰 Carteira Digital</h2>
       <div class="card">
-        <p>Saldo: <strong>250 CLBC</strong></p>
-        <p>Última transação: +50 CLBC (venda de pizza)</p>
+        <p>Saldo: <strong id="saldo">0 CLBC</strong></p>
+        <p>XP: <span id="xp">0</span></p>
       </div>
     </section>
 
     <section id="login">
-      <button id="login-btn">Login com Google</button>
+      <button id="login-btn" class="button">Login com GitHub</button>
+    </section>
+
+    <section id="game" style="display:none;">
+      <h2>Bem-vindo, <span id="username"></span>!</h2>
+      <p>Saldo: <span id="saldo">0</span> CLBC</p>
+      <p>XP: <span id="xp">0</span></p>
+      <button class="button" onclick="venderPizza()">🍕 Vender Pizza (+10 CLBC)</button>
     </section>
 
     <section id="perfil">
@@ -60,13 +69,6 @@
         <p>Jogador: Gilberto</p>
         <p>Nível: 4 | XP: 820 / 1000</p>
       </div>
-    </section>
-
-    <section id="game" style="display:none;">
-      <h2>Bem-vindo, <span id="username"></span>!</h2>
-      <p>Saldo: <span id="saldo">0</span> CLBC</p>
-      <button onclick="venderPizza()">🍕 Vender Pizza (+10 CLBC)</button>
-      <p>XP: <span id="xp">0</span></p>
     </section>
   </main>
 </body>
