@@ -17,13 +17,8 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 # Dados em memória como fallback
 users_db = {}
 
-@app.route('/')
-def serve_frontend():
-    return send_from_directory('../frontend', 'index.html')
-
-@app.route('/<path:path>')
-def serve_static(path):
-    return send_from_directory('../frontend', path)
+# Frontend agora é servido pelo Vercel diretamente
+# Removidas rotas de arquivos estáticos
 
 @app.route("/api/user", methods=["POST"])
 def create_or_get_user():

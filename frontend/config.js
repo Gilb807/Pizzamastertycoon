@@ -12,7 +12,7 @@ const SUPABASE_CONFIG = {
 const API_CONFIG = {
     baseUrl: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:5000'
-        : '', // Produção usa mesmo domínio
+        : window.location.origin, // Produção usa mesmo domínio com origem completa
     endpoints: {
         createUser: '/api/user',
         finishGame: '/api/game/finish',
